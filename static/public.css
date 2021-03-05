@@ -1,0 +1,92 @@
+.mybrand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    color: lightsteelblue;
+    font-weight: bold;
+    text-decoration:none;
+}
+
+.mybrand:hover {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    color: lightskyblue;
+    font-weight: bold;
+    text-decoration:none;
+}
+
+.block-card-sm{
+    background-color: rgb(252, 252, 252);
+    width: 100%;
+    box-shadow: 3px;
+    height:auto;
+    padding: 15px;
+    margin-bottom:10px;
+}
+
+.block-header{
+    font-weight: lighter;
+    font-size: 23px;
+}
+
+.block-describe{
+    font-weight: lighter;
+    font-size: 16px;
+    display: block;
+    float:right;
+    color:silver;
+}
+
+.block-describe-bottom{
+    font-weight: lighter;
+    font-size: 12px;
+    display: block;
+    color:silver;
+}
+
+.block-text{
+    margin-top:25px;
+    color:mediumturquoise;
+    display: block;
+}
+
+.block-link{
+    color:lightsteelblue;
+    display: block;
+    margin-top:15px;
+    cursor: pointer;
+    text-decoration:none;
+}
+
+.block-link:hover{
+    color:rgb(119, 145, 179);
+    display: block;
+    margin-top:15px;
+    cursor: pointer;
+    text-decoration:none;
+}
+
+.hot-title{
+    display: block;
+    text-decoration:none;
+    color:dimgrey;
+    cursor: pointer;
+    margin:5px;
+}
+
+.hot-title:hover{
+    display: block;
+    text-decoration:none;
+    color:rgb(175, 175, 175);
+    cursor: pointer;
+    margin:5px;
+}
