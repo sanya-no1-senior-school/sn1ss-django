@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sanya No.1 Middle School</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="{% static  'public.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+        <a class="mybrand" href="#">三亚一中校园网 </a>
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">返回主页</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id='app' class="container" style="margin-top:160px">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="pagetitle">
+                      <span style="font-size: 1.5em;"><strong>用户登录</strong> <small id='errdisp'>使用UID登录</small></span>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <form action="../login/" method="POST" autocomplete="off">
+            {%csrf_token%}
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <label>用户ID：</label>
+                    <input type="number" class="form-control" name="uid" maxlength="7" placeholder="用户数字ID">
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <label>密码：</label>
+                    <input type="password" class="form-control" name="password" maxlength="25" placeholder="密码">
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row" style="margin-top:20px;margin-bottom:20px;padding:10px;">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <input type="submit" class="btn btn-outline-info btn-block" value="登录">
+                </div>
+                <div class="col-sm-3"></div>
+
+            </div>
+        </form>
+    </div>
+    <script>
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) { return pair[1]; }
+            }
+            return (false);
+        };
+
+        window.onload=function(){
+            var err=getQueryVariable("err");
+            document.getElementById('errdisp').innerHTML="错误："+decodeURI(err);
+        };
+    </script>
+</body>
+
+</html>

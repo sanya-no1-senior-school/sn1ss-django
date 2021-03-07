@@ -19,5 +19,12 @@ import blogs.views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',v.index)
+    path('',v.index),
+    path('new/',v.newblog),
+    path('login/',v.login),
+    path('blog/<str:bloghash>/',v.viewBlog),
+    path('user/<int:uid>/',v.userSpace),
+    path('attachupd/',v.attachRev),
+    path('attach/<str:attach_hash>/',v.getAttach),
+    path('rmblog/<str:bloghash>/',v.removeBlog)
 ]

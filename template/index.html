@@ -5,7 +5,8 @@
 <head>
     <title>Sanya No.1 Middle School</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 
 
@@ -31,14 +32,20 @@
                     <a class="nav-link" href="#">主页</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">更多</a>
+                    <a class="nav-link" href="/new/">发表</a>
                 </li>
+                {% if username %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">登录</a>
+                    <a class="nav-link" href="/user/{{uid}}/">{{username}}的个人主页</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/login/">登录</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">注册</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -46,33 +53,43 @@
     <div class="container" style="margin-top:80px">
         <div class="row">
             <div class="col-sm-8">
-                {%  for bl in blogs %}
+                {% for bl in blogs %}
                 <div class="block-card-sm">
                     <div style="display:inline-block;width:100%">
-                        <span class="block-header"><i class="fa fa-rss-square" aria-hidden="true"></i>&nbsp;&nbsp;{{bl.title}}</span>
+                        <span class="block-header"><i class="fa fa-rss-square"
+                                aria-hidden="true"></i>&nbsp;&nbsp;{{bl.title}}</span>
                         <span class="block-describe">{{bl.category}}</span>
-                        <span class="block-describe-bottom">{{bl.author.username}}  阅读 {{bl.read}}  点赞 {{bl.star}}  评论 {{bl.comment}} {{bl.publish_time}}</span>
+                        <span class="block-describe-bottom"><a
+                                href="/user/{{bl.author.userid}}/">{{bl.author.username}}</a> 阅读 {{bl.read}} 点赞
+                            {{bl.star}} 评论 {{bl.comment}} {{bl.publish_time}}</span>
                     </div>
                     <span class="block-text">
                         {{bl.digest}}...
                     </span>
-                    <a class="block-link" href="/blog/{{bl.blogid}}">More</a>
+                    <a class="block-link" href="/blog/{{bl.bloghash}}">More</a>
                 </div>
-                {%  endfor %}
+                {% endfor %}
             </div>
             <div class="col-sm-4">
                 <div class="alert alert-light alert-dismissible fade show">
                     <strong>热门内容</strong>
                     <hr>
-                    <a class="hot-title" href="#">· 注意这条消息</a>
-                    <a class="hot-title" href="#">· 注意这条消息</a>
-                    <a class="hot-title" href="#">· 注意这条消息</a>
+                    {% for bl in hotblogs %}
+                    <a class="hot-title" href="/blog/{{bl.bloghash}}/">
+                        · {{bl.title}}
+                        <span class="badge badge-pill badge-info">
+                            {{bl.read}}
+                        </span>
+                    </a>
+
+                    {% endfor %}
                 </div>
                 <div class="alert alert-light alert-dismissible fade show">
                     <strong>板块分类</strong>
                     <hr>
-                    {%  for cat in categories %}
-                        <a class="hot-title" href="/category/{{cat}}/">· {{cat}}</a>
+                    {% for cat in categories %}
+                    <!--a class="hot-title" href="/category/{{cat.name}}/">· {{cat.name}}</a-->
+                    <a class="hot-title" href="#">· {{cat.name}}</a>
                     {% endfor %}
                 </div>
                 <div class="alert alert-light alert-dismissible fade show">

@@ -121,3 +121,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[(os.path.join(BASE_DIR,"static"))]
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 30*1024*1024
